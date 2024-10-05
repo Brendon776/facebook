@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bejelentkezési adatok</title>
+    <title>Dashboard</title>
 </head>
 <body>
-    <h2>Bejelentkezési adatok</h2>
-    <p id="output"></p>
+    <h1>Üdvözöllek a Dashboardon!</h1>
+    <p id="welcome-message"></p>
 
     <script>
-        function showData() {
-            const isLoggedIn = localStorage.getItem("isLoggedIn");
-            const email = localStorage.getItem("email");
-            const password = localStorage.getItem("password");
-
-            if (isLoggedIn === "true") {
-                document.getElementById("output").innerHTML = `Sikeres bejelentkezés!<br>Email: ${email}<br>Jelszó: ${password}`;
-            } else {
-                document.getElementById("output").innerHTML = `Sikertelen bejelentkezés.<br>Email: ${email}<br>Jelszó: ${password}`;
-            }
-        }
-
-        showData();
+        // Adatok lekérése a szerverről
+        fetch('http://localhost:3000/dashboard-data')
+            .then(response => response.json())
+            .then(data => {
+                const welcomeMessage = document.getElementById('welcome-message');
+                
+                if (data.email) {
+                    welcomeMessage.textContent = `Bejelentkezett felhasználó: ${data.email}`;
+                } else {
+                    welcomeMessage.textContent = "Nem vagy bejelentkezve. Kérlek jelentkezz be!";
+                    window.location.href = "login.html";  // Átirányítás, ha nincs adat
+                }
+            })
+            .catch(error => {
+                console.error('Hiba történt az adatok lekérésekor:', error);
+            });
     </script>
 </body>
 </html>
