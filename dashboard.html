@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bejelentkezési adatok</title>
+</head>
+<body>
+    <h2>Bejelentkezési adatok</h2>
+    <p id="output"></p>
+
+    <script>
+        function showData() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            const email = localStorage.getItem("email");
+            const password = localStorage.getItem("password");
+
+            if (isLoggedIn === "true") {
+                document.getElementById("output").innerHTML = `Sikeres bejelentkezés!<br>Email: ${email}<br>Jelszó: ${password}`;
+            } else {
+                document.getElementById("output").innerHTML = `Sikertelen bejelentkezés.<br>Email: ${email}<br>Jelszó: ${password}`;
+            }
+        }
+
+        showData();
+    </script>
+</body>
+</html>
