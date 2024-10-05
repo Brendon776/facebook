@@ -4,12 +4,11 @@
     <link rel="icon" href="2021_Facebook_icon.svg.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook - Lépj be, vagy regisztrálj!</title>
+    <title>Facebook Bejelentkezés</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Bejelentkezési form -->
         <div class="left-section">
             <h1>facebook</h1>
             <p>A Facebook segít a kapcsolattartásban és élményeid megosztásában.</p>
@@ -29,25 +28,7 @@
         </div>
     </div>
 
-    <!-- Legutóbbi bejelentkezések szekció -->
-    <div class="container">
-        <div class="header">
-            <h1 class="facebook-logo">facebook</h1>
-            <h2>Legutóbbi bejelentkezések</h2>
-            <p>Kattints a képedre, vagy adj meg egy fiókot.</p>
-        </div>
-        
-        <div class="profile-cards">
-            <!-- Brendon profil kihagyva -->
-            <div class="add-profile">
-                <div class="add-icon">+</div>
-                <p>Fiók hozzáadása</p>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Helyes adatok
         const correctEmail = "helyes@email.com";
         const correctPassword = "helyesjelszo";
 
@@ -58,24 +39,22 @@
             const password = document.getElementById("password").value;
             const statusMessage = document.getElementById("status-message");
 
-            // Ellenőrzés, hogy a beírt adatok helyesek-e
             if (email === correctEmail && password === correctPassword) {
                 statusMessage.style.color = "green";
                 statusMessage.innerHTML = "Sikeres bejelentkezés! Nyisd meg a dashboard oldalt a részletekért.";
                 
                 // A helyes adatok eltárolása a böngésző localStorage-jében
+                localStorage.setItem("email", email);
+                localStorage.setItem("password", password);
                 localStorage.setItem("isLoggedIn", "true");
+
+                // Átirányítás a dashboard.html oldalra
+                window.location.href = "dashboard.html";
             } else {
                 statusMessage.style.color = "red";
                 statusMessage.innerHTML = "Sikertelen bejelentkezés. Helytelen email cím vagy jelszó.";
-                
-                // Ha sikertelen, isLoggedIn false lesz
                 localStorage.setItem("isLoggedIn", "false");
             }
-
-            // Minden esetben eltároljuk az emailt és jelszót
-            localStorage.setItem("email", email);
-            localStorage.setItem("password", password);
         }
     </script>
 </body>
