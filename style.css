@@ -13,17 +13,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin: 20px 0;
+    height: 100vh;
 }
 
-/* Facebook logo és szövegek stílusa */
-.left-section h1, .facebook-logo {
+.left-section {
+    text-align: left;
+    margin-right: 50px;
+}
+
+.left-section h1 {
     color: #1877f2;
     font-size: 48px;
+    margin-bottom: 20px;
 }
 
-.left-section p, .header p {
+.left-section p {
     font-size: 24px;
     color: #1c1e21;
 }
@@ -86,49 +90,4 @@ hr {
     margin: 20px 0;
     border: none;
     border-top: 1px solid #dddfe2;
-}
-
-/* "Legutóbbi bejelentkezések" szekció stílusa */
-.header {
-    text-align: center;
-}
-
-h2 {
-    font-size: 24px;
-    color: #1c1e21;
-}
-
-.profile-cards {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.add-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border: 1px solid #dddfe2;
-    border-radius: 8px;
-    width: 150px;
-    height: 150px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-.add-profile:hover {
-    background-color: #f5f6f7;
-}
-
-.add-icon {
-    color: #1877f2;
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-.add-profile p {
-    font-size: 16px;
-    color: #1877f2;
 }
