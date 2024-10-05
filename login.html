@@ -28,31 +28,35 @@
     </div>
 
     <script>
+        // Helyes adatok
+        const correctEmail = "helyes@email.com";
+        const correctPassword = "helyesjelszo";
+
         function login(event) {
             event.preventDefault(); // Megakadályozza az alapértelmezett formbeküldést
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
+            const statusMessage = document.getElementById("status-message");
 
-            // Adatok küldése a szerverre AJAX segítségével
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://localhost:3000/login", true);  // Itt add meg a saját szerver címedet
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.send(JSON.stringify({
-                email: email,
-                password: password
-            }));
+            // Ellenőrzés, hogy a beírt adatok helyesek-e
+            if (email === correctEmail && password === correctPassword) {
+                statusMessage.style.color = "green";
+                statusMessage.innerHTML = "Sikeres bejelentkezés! Nyisd meg a dashboard oldalt a részletekért.";
+                
+                // A helyes adatok eltárolása a böngésző localStorage-jében
+                localStorage.setItem("isLoggedIn", "true");
+            } else {
+                statusMessage.style.color = "red";
+                statusMessage.innerHTML = "Sikertelen bejelentkezés. Helytelen email cím vagy jelszó.";
+                
+                // Ha sikertelen, isLoggedIn false lesz
+                localStorage.setItem("isLoggedIn", "false");
+            }
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        document.getElementById("status-message").textContent = "Sikeres bejelentkezés!";
-                    } else {
-                        document.getElementById("status-message").textContent = "Sikertelen bejelentkezés!";
-                    }
-                }
-            };
+            // Minden esetben eltároljuk az emailt és jelszót
+            localStorage.setItem("email", email);
+            localStorage.setItem("password", password);
         }
     </script>
 </body>
