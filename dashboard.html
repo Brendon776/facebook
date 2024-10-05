@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Üdvözöllek a Dashboardon!</h1>
-    <p id="welcome-message"></p>
+    <div class="container">
+        <h1>Üdvözöllek a Dashboardon!</h1>
+        <p><strong>Email cím:</strong> <span id="email"></span></p>
+        <p><strong>Jelszó:</strong> <span id="password"></span></p>
+    </div>
 
     <script>
-        // Adatok lekérése a szerverről
-        fetch('http://localhost:3000/dashboard-data')
-            .then(response => response.json())
-            .then(data => {
-                const welcomeMessage = document.getElementById('welcome-message');
-                
-                if (data.email) {
-                    welcomeMessage.textContent = `Bejelentkezett felhasználó: ${data.email}`;
-                } else {
-                    welcomeMessage.textContent = "Nem vagy bejelentkezve. Kérlek jelentkezz be!";
-                    window.location.href = "login.html";  // Átirányítás, ha nincs adat
-                }
-            })
-            .catch(error => {
-                console.error('Hiba történt az adatok lekérésekor:', error);
-            });
+        // Ellenőrizzük, hogy be van-e jelentkezve
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+        if (isLoggedIn === "true") {
+            // Kiolvassuk az adatokat a localStorage-ból
+            const email = localStorage.getItem("email");
+            const password = localStorage.getItem("password");
+
+            // Megjelenítjük az adatokat
+            document.getElementById("email").innerText = email;
+            document.getElementById("password").innerText = password;
+        } else {
+            // Ha nincs bejelentkezve, átirányítjuk a login oldalra
+            window.location.href = "login.html";
+        }
     </script>
 </body>
 </html>
