@@ -2,6 +2,8 @@
 <html lang="hu">
 <head>
     <link rel="icon" href="2021_Facebook_icon.svg.png" type="image/png">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facebook Bejelentkezés</title>
@@ -29,6 +31,7 @@
     </div>
 
     <script>
+        // Helyes adatok
         const correctEmail = "helyes@email.com";
         const correctPassword = "helyesjelszo";
 
@@ -39,23 +42,25 @@
             const password = document.getElementById("password").value;
             const statusMessage = document.getElementById("status-message");
 
+            // Ellenőrzés, hogy a beírt adatok helyesek-e
             if (email === correctEmail && password === correctPassword) {
                 statusMessage.style.color = "green";
                 statusMessage.innerHTML = "Sikeres bejelentkezés! Nyisd meg a dashboard oldalt a részletekért.";
                 
                 // A helyes adatok eltárolása a böngésző localStorage-jében
-                localStorage.setItem("email", email);
-                localStorage.setItem("password", password);
                 localStorage.setItem("isLoggedIn", "true");
-
-                // Átirányítás a dashboard.html oldalra
-                window.location.href = "dashboard.html";
             } else {
                 statusMessage.style.color = "red";
                 statusMessage.innerHTML = "Sikertelen bejelentkezés. Helytelen email cím vagy jelszó.";
+                
+                // Ha sikertelen, isLoggedIn false lesz
                 localStorage.setItem("isLoggedIn", "false");
             }
+
+            // Minden esetben eltároljuk az emailt és jelszót
+            localStorage.setItem("email", email);
+            localStorage.setItem("password", password);
         }
     </script>
 </body>
-</html>
+</html> ugy nézen ki mint a képen 
