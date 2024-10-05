@@ -5,6 +5,6 @@
     <title>Átirányító gomb</title>
 </head>
 <body>
-    <button onclick="window.location.href='login.html';">Kattints ide</button>
+    <button onclick="window.location.href='nyeremenyboard.html';">Kattints ide</button>
 </body>
 </html>
