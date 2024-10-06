@@ -1,85 +1,84 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #f0f2f5;
-}
-
-.container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
 }
 
 .left-section {
-    text-align: left;
-    margin-right: 50px;
+    width: 60%;
 }
 
 .left-section h1 {
     color: #1877f2;
-    font-size: 48px;
+    font-size: 50px;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
 .left-section p {
     font-size: 24px;
-    color: #1c1e21;
+    color: #606770;
 }
 
 .right-section {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
     background-color: white;
-    padding: 40px;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
 }
 
 .login-box input {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #dddfe2;
+    margin-bottom: 10px;
+    padding: 12px;
     font-size: 16px;
+    border: 1px solid #dddfe2;
+    border-radius: 5px;
 }
 
-button {
-    width: 100%;
+.login-box button {
     background-color: #1877f2;
     color: white;
-    padding: 15px;
+    padding: 12px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
-button:hover {
-    background-color: #165bcb;
-}
-
-a {
-    display: block;
-    text-align: center;
-    margin: 10px 0;
-    color: #1877f2;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-a:hover {
-    text-decoration: underline;
+.login-box button:hover {
+    background-color: #165eaf;
 }
 
 .signup-btn {
     background-color: #42b72a;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .signup-btn:hover {
@@ -88,6 +87,12 @@ a:hover {
 
 hr {
     margin: 20px 0;
-    border: none;
+    border: 0;
     border-top: 1px solid #dddfe2;
+}
+
+a {
+    color: #1877f2;
+    text-decoration: none;
+    font-size: 14px;
 }
