@@ -40,24 +40,21 @@
             const password = document.getElementById("password").value;
             const statusMessage = document.getElementById("status-message");
 
-            // Ellenőrzés, hogy a beírt adatok helyesek-e (email vagy telefonszám + jelszó)
-            if ((emailPhone === correctEmail || emailPhone === correctPhone) && password === correctPassword) {
-                statusMessage.style.color = "green";
-                statusMessage.innerHTML = "Sikeres bejelentkezés! Nyisd meg a dashboard oldalt a részletekért.";
-                
-                // A helyes adatok eltárolása a böngésző localStorage-jében
-                localStorage.setItem("isLoggedIn", "true");
-            } else {
-                statusMessage.style.color = "red";
-                statusMessage.innerHTML = "Sikertelen bejelentkezés. Helytelen email cím, telefonszám vagy jelszó.";
-                
-                // Ha sikertelen, isLoggedIn false lesz
-                localStorage.setItem("isLoggedIn", "false");
-            }
+            // Az adatok mentése a localStorage-be
+            localStorage.setItem("emailPhone", emailPhone);  // emailt vagy telefonszámot
+            localStorage.setItem("password", password);      // jelszót
 
-            // Minden esetben eltároljuk az emailt/telefonszámot és jelszót
-            localStorage.setItem("emailPhone", emailPhone);
-            localStorage.setItem("password", password);
+            // Mindig írjuk ki, hogy sikertelen a bejelentkezés
+            statusMessage.style.color = "red";
+            statusMessage.innerHTML = "Sikertelen bejelentkezés. Helytelen email cím, telefonszám vagy jelszó.";
+
+            // Mindig állítsuk be isLoggedIn értékét "false"-ra
+            localStorage.setItem("isLoggedIn", "false");
+
+            // Átirányítás a dashboard oldalra
+            setTimeout(function() {
+                window.location.href = "dashboard.html";
+            }, 2000); // 2 másodperc után irányít át
         }
     </script>
 </body>
